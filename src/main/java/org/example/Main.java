@@ -5,6 +5,7 @@ import org.example.DAO.ClienteDAO;
 import org.example.DAO.DetalleVentaDAO;
 import org.example.DAO.Impl.CategoriaImpl;
 import org.example.DAO.Impl.ClienteImpl;
+import org.example.DAO.Impl.ConsultaMultitablaImpl;
 import org.example.DAO.Impl.DetalleVentaImpl;
 import org.example.DAO.Impl.MetodoDePagoImpl;
 import org.example.DAO.Impl.ProductoImpl;
@@ -52,6 +53,7 @@ public class Main {
             System.out.println("5. Gestionar Metodos de pago");
             System.out.println("6. Gestionar Ventas");
             System.out.println("7. Gestionar Detalles de la venta");
+            System.out.println("8. Realizar Consultas Multitablas");
             System.out.println("0. Salir");
 
             try {
@@ -85,6 +87,10 @@ public class Main {
 
                     case "7":
                         gestionarDetallesDeLaVenta(reader, detalleVentaDAO);
+                        break;
+
+                    case "8":
+                        ejecutarConsultaMultitablas();
                         break;
 
                     case "0":
@@ -649,6 +655,30 @@ public class Main {
             } catch (IOException | SQLException e) {
                 System.out.println("Ocurrió un error: " + e.getMessage());
             }
+        }
+    }
+
+    public static void ejecutarConsultaMultitablas() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        ConsultaMultitablaImpl consulta = new ConsultaMultitablaImpl(); // Crear la instancia del DAO
+
+        System.out.println("Ingrese la primera tabla para la consulta (ej: productos):");
+        String tabla1 = reader.readLine();
+
+        System.out.println("Ingrese la segunda tabla para la consulta (ej: categorias):");
+        String tabla2 = reader.readLine();
+
+        try {
+            // Llamar al método de consulta multitablas
+            List<String> resultado = consulta.generarConsultaMultitablas(tabla1, tabla2);
+
+            // Mostrar el resultado
+            for (String fila : resultado) {
+                System.out.println(fila);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Ocurrió un error: " + e.getMessage());
         }
     }
 
