@@ -662,10 +662,24 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ConsultaMultitablaImpl consulta = new ConsultaMultitablaImpl(); // Crear la instancia del DAO
 
-        System.out.println("Ingrese la primera tabla para la consulta (ej: productos):");
+        System.out.println("Ingrese la primera tabla para la consulta");
+        System.out.println("1. Categorias");
+        System.out.println("2. Clientes");
+        System.out.println("3. Detalles de la venta");
+        System.out.println("4. Metodos de pago");
+        System.out.println("5. Productos");
+        System.out.println("6. Proveedores");
+        System.out.println("7. Ventas");
         String tabla1 = reader.readLine();
 
         System.out.println("Ingrese la segunda tabla para la consulta (ej: categorias):");
+        System.out.println("1. Categorias");
+        System.out.println("2. Clientes");
+        System.out.println("3. Detalles de la venta");
+        System.out.println("4. Metodos de pago");
+        System.out.println("5. Productos");
+        System.out.println("6. Proveedores");
+        System.out.println("7. Ventas");
         String tabla2 = reader.readLine();
 
         try {
@@ -681,12 +695,5 @@ public class Main {
             System.out.println("Ocurrió un error: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
 
 }
